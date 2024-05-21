@@ -1,13 +1,24 @@
 import React, { useState } from 'react'
-import { Alert, Button, Image, Pressable, SafeAreaView, StyleSheet, Switch, Text, TextInput, View } from 'react-native'
+import { Alert, Image, Pressable, SafeAreaView, Text, TextInput, View } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 import { styles } from '../css/styles';
 
 const logo = require('../../assets/logo.png');
 
 function Login() {
-    const [click, setClick] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+    const navigation = useNavigation();
+
+    const handleLogin = () => {
+        if (username === 'test' && password === 'test') {
+            Alert.alert('Success', 'You are logged in');
+            navigation.navigate('Home');
+        } else {
+            Alert.alert('Error', 'Invalid credentials');
+        }
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -23,7 +34,7 @@ function Login() {
             </View>
 
             <View style={styles.buttonView}>
-                <Pressable style={styles.button} onPress={() => Alert.alert('Login', 'Login Successful')}>
+                <Pressable style={styles.button} onPress={handleLogin}>
                     <Text style={styles.buttonText}>LOGIN</Text>
                 </Pressable>
             </View>
