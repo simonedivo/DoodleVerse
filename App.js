@@ -1,20 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from './src/screens/Login';
+import Home from './src/screens/Home';
+import Social from './src/screens/Social';
+import Ranking from './src/screens/Ranking';
+import Upload from './src/screens/Upload';
+
+const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Login'>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+        <Stack.Screen component={Login} name='Login' options={{ headerShown: false}} />
+        <Stack.Screen component={Home} name='Home'/>
+        <Stack.Screen component={Social} name='Social'/>
+        <Stack.Screen component={Ranking} name='Ranking'/>
+        <Stack.Screen component={Upload} name='Upload'/>
+
+      </Stack.Navigator>
+      <StatusBar style='auto'/>
+    </NavigationContainer>
+  );
+};
