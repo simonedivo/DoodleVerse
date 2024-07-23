@@ -3,6 +3,20 @@ import { Alert, Image, Pressable, SafeAreaView, Text, TextInput, View } from 're
 import { useNavigation } from '@react-navigation/native';
 import { styles } from '../css/styles';
 
+class User {
+    constructor(username) {
+        this.username = username;
+    }
+    getUsername() {
+        return this.username;
+    }
+    setUsername(username) {
+        this.username = username;
+    }
+}
+
+let user = new User('');
+
 const logo = require('../../assets/logo.png');
 
 function Login() {
@@ -14,6 +28,7 @@ function Login() {
     const handleLogin = () => {
         if (username === 'test' && password === 'test') {
             Alert.alert('Success', 'You are logged in');
+            user.setUsername(username);
             navigation.navigate('Home');
         } else {
             Alert.alert('Error', 'Invalid credentials');
@@ -42,5 +57,7 @@ function Login() {
         </SafeAreaView>
     )
 }
+
+export { user };
 
 export default Login;
