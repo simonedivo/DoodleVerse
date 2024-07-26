@@ -29,17 +29,17 @@ function Login() {
         if (username === 'test' && password === 'test') {
             Alert.alert('Success', 'You are logged in');
             user.setUsername(username);
-            navigation.navigate('Home');
+            navigation.navigate('TabNavigator');
         } else {
             Alert.alert('Error', 'Invalid credentials');
         }
     }
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.loginContainer}>
             
             <Image source={logo} style={styles.image}/>
-            <Text style={styles.title}>Login</Text>
+            <Text style={styles.titleLogin}>Login</Text>
 
             <View style={styles.inputView}> 
                 <TextInput style={styles.input} placeholder='Email or Username' value={username} 
