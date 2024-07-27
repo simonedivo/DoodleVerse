@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Pressable, ImageBackground } from 'react-native';
+import { View, Text, Pressable, ScrollView} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import promptList from '../../resources/prompts';
 import _ from 'lodash';
@@ -49,24 +49,24 @@ function Home() {
 	}
 
 	return (
-		<ImageBackground source={require('../../resources/purpleBackground.jpg')} style={styles.homeContainer}>
-            <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center' }}>
+		<ScrollView style={{flex: 1}}>
+            <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', marginTop : 25}}>
                 <Text style={styles.header}>Home Page</Text>
             </View>
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingBottom : 60 }}>
-                <Text style={styles.text}>Today's daily prompt is </Text>
-                <Text style={styles.dailyPrompt}>{dailyRandomPrompt}</Text>
+            <View style={styles.textContainer}>
+                <Text style={{color : 'white', marginBottom : 10, fontSize : 24, textAlign : 'center'}}>Today's daily prompt is </Text>
+                <Text style={{ fontWeight : 'bold', textTransform : 'uppercase', fontSize : 40, color : 'white', textAlign : 'center'}}>{dailyRandomPrompt}</Text>
             </View>
-            <View style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
-				<Text style={styles.text}>Don't like it? Generate a new prompt</Text>
-                <Pressable style={styles.button} onPress={handleNewPrompt}>
-					<Text style={styles.buttonText}>GENERATE NEW PROMPT</Text>
+            <View style={styles.textContainer}>
+				<Text style={{color : 'white', marginBottom : 10, fontSize : 20}}>Don't like it? Generate a new prompt</Text>
+                <Pressable style={[styles.button, {backgroundColor : '#77E4C8'}]} onPress={handleNewPrompt}>
+					<Text style={[styles.buttonText, {backgroundColor : '#77E4C8'}]}>GENERATE NEW PROMPT</Text>
 				</Pressable>
 				<View style={{ paddingBottom : 30 }}>
-				<Text style={styles.text}>{newRandomPrompt}</Text>
+				<Text style={{ fontWeight : 'bold', textTransform : 'uppercase', fontSize : 36, color : 'white', textAlign : 'center', marginTop : 15}}>{newRandomPrompt}</Text>
 				</View>
             </View>
-        </ImageBackground>
+		</ScrollView>
 	);
 }
 

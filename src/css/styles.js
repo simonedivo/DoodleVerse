@@ -64,26 +64,12 @@ export const styles = StyleSheet.create({
         color : 'black',
         borderRadius : 15,
     },
-    text : {
+    textContainer : {
         padding : 15,
-        fontSize : 30,
-        backgroundColor : '#F1EAFF',
+        backgroundColor : '#D20062',
+        color : 'white',
         borderRadius : 50,
-    },
-    dailyPrompt : {
-        padding : 15,
-        fontSize : 30,
-        backgroundColor : '#F1EAFF',
-        borderRadius : 50,
-        textTransform : 'uppercase',
-        fontWeight : 'bold',
-    },
-    newPromptContainer : {
-        fontSize : 30,
-        justifyContent : 'flex-end',
-        borderRadius : 5,
-        borderWidth : 1,
-        borderColor : 'purple',
+        margin : 30,
     },
     flatList: {
         paddingHorizontal: 10,
@@ -101,7 +87,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#E5D4FF',
+        backgroundColor: 'white',
         padding: 20,
     },
     modalImage: {
@@ -111,20 +97,21 @@ export const styles = StyleSheet.create({
     },
     modalText : {
         fontSize : 20,
+        color : 'white',
     },
     modalTextContainer : {
-        backgroundColor : '#F1EAFF',
+        backgroundColor : '#D20062',
         borderRadius : 50,
         padding : 15,
         overflow : 'hidden',
     },
     likedButton : {
-        backgroundColor : 'red',
+        backgroundColor : '#77E4C8',
         height : 45,
         borderColor : 'gray',
         borderWidth : 1,
         borderRadius : 5,
         alignItems : 'center',
-        justifyContent : 'center'
+        justifyContent : 'center',
     },
 });

@@ -51,7 +51,7 @@ function Social() {
     }
 
 	return (
-        <View style={{ flex: 1 , backgroundColor : '#E5D4FF'}}>
+        <View style={{ flex: 1 }}>
             <Text style={[styles.header, {paddingTop : 30, textAlign : 'center'}]}>Social Page</Text>
             <FlatList
                 data={sortedImageData}
@@ -77,13 +77,13 @@ function Social() {
                         <TouchableOpacity
                         onPress={() => handleLike(selectedImage.id)}
                         style={[
-                            [styles.button, { margin : 30 }],
-                            likedItems[selectedImage.id] && [styles.likedButton, { margin : 30 }],
+                            [styles.button, { margin : 30, backgroundColor : 'red' , width : 100, height : 50}],
+                            likedItems[selectedImage.id] && [styles.likedButton, { margin : 30, width : 100, height : 50}],
                         ]}
                         >
                             <Text style={styles.buttonText}>Like</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.button}>
+                        <TouchableOpacity onPress={() => setModalVisible(false)} style={[styles.button, {backgroundColor : '#D20062', width : 100, height : 50}]}>
                             <Text style={styles.buttonText}>Close</Text>
                         </TouchableOpacity>
                     </View>

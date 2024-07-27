@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Alert, View, Text, TextInput, Button, Image } from 'react-native';
+import { Alert, View, Text, TextInput, Button, Pressable, Image, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { user } from './Login';
+import { styles } from '../css/styles';
 
 function getDateString() {
 	const date = new Date();
@@ -64,25 +65,35 @@ function Upload() {
 	};
 
 	return (
-        <View style={{ flex: 1 }}>
-			<View style={{ flex:1 }}>
-				<Text style={{ fontSize: 24, fontWeight: 'bold' }}>Username: {user.getUsername()}</Text>
+        <ScrollView style={{ flex: 1 }}>
+            <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', marginTop : 25}}>
+                <Text style={styles.header}>Upload Page</Text>
+            </View>
+			<View style={styles.textContainer}>
+				<Text style={{ fontSize: 24, fontWeight: 'bold', color : 'white', marginBottom : 20}}>Username: {user.getUsername()}</Text>
             	<TextInput
-            	    placeholder="Description"
+            	    placeholder="Insert a description here" 
             	    value={description}
             	    onChangeText={setDescription}
+					style={{ color : 'white', fontSize : 18, marginBottom : 20}}	
             	/>
-            	<Button title="Launch Camera" onPress={handleLaunchCamera} />
-            	<Button title="Launch Image Library" onPress={handleLaunchImageLibrary} />
+            	<Pressable onPress={handleLaunchCamera} style={[styles.button, {backgroundColor : '#77E4C8'}]}>
+					<Text style={[styles.buttonText, {backgroundColor : '#77E4C8'}]}>Camera</Text>
+				</Pressable>
+				<Text style={{color : 'white', margin : 15, fontSize : 20, textAlign : 'center'}}>OR</Text>
+            	<Pressable onPress={handleLaunchImageLibrary} style={[styles.button, {backgroundColor : '#77E4C8'}]}>
+					<Text style={[styles.buttonText, {backgroundColor : '#77E4C8'}]}>Choose from Library</Text>
+				</Pressable>
             	{imagePath && (
             	    <>
-            	        <Text>This is your drawing:</Text>
-            	        <Image source={{ uri: imagePath }} style={{ width: 200, height: 200 }} />
-						<Button title="Confirm" onPress={handleSaveImage} />
+            	        <Image source={{ uri: imagePath }} style={{ width: 200, height: 200 , margin: 30, borderWidth: 2, borderColor: 'white', alignItems: 'center'}} />
+						<Pressable title="Confirm" onPress={handleSaveImage} style={[styles.button, {backgroundColor : '#77E4C8'}]}>
+					<Text style={[styles.buttonText, {backgroundColor : '#77E4C8'}]}>Upload</Text>
+				</Pressable>
             	    </>
             	)}
 				</View>
-        </View>
+        </ScrollView>
     );
 }
 
