@@ -20,15 +20,13 @@ function Social() {
     }, []);
 
 	function handleLike(id) {
-        setSortedImageData((currentData) => {
-            return currentData.map((item) => {
-                if (item.id === id) {
-                    const isLiked = likedItems[id];
-                    const updatedLikes = isLiked ? item.likes - 1 : item.likes + 1;
-                    return { ...item, likes: updatedLikes };
-                }
-                return item;
-            });
+        const updatedImagesData = imagesData.map((item) => {
+            if (item.id === id) {
+                const isLiked = likedItems[id];
+                const updatedLikes = isLiked ? item.likes - 1 : item.likes + 1;
+                return { ...item, likes: updatedLikes };
+            }
+            return item;
         });
     
         setLikedItems((currentLikedItems) => ({
@@ -41,6 +39,17 @@ function Social() {
         setSelectedImage(item);
         setModalVisible(true);
     }
+
+    const formatDateTime = (dateTime) => {
+        const [datePart, timePart] = dateTime.split('_');
+        const date = new Date(datePart);
+        const formattedDate = date.toLocaleDateString('it-IT');
+        const [hours, minutes, seconds] = timePart.split('-');
+        const timeString = `${hours}:${minutes}:${seconds}`;
+        const time = new Date(`1970-01-01T${timeString}`);
+        const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+        return `${formattedDate} ${formattedTime}`;
+    };
 
     function renderItem({ item }) {
         return (
@@ -71,19 +80,19 @@ function Social() {
                         <Image source={selectedImage.imagePath} style={styles.modalImage} />
                         <View style={styles.modalTextContainer}>
                             <Text style={styles.modalText}>Made by {selectedImage.user}</Text>
-                            <Text style={styles.modalText}>Date & Time: {selectedImage.dateTime}</Text>
+                            <Text style={styles.modalText}>Date & Time: {formatDateTime(selectedImage.dateTime)}</Text>
                             <Text style={styles.modalText}>Description: {selectedImage.description}</Text>
                         </View>
                         <TouchableOpacity
                         onPress={() => handleLike(selectedImage.id)}
                         style={[
-                            [styles.button, { margin : 30, backgroundColor : 'red' , width : 100, height : 50}],
+                            [styles.button, { margin : 30, backgroundColor : '#ea0606' , width : 100, height : 50}],
                             likedItems[selectedImage.id] && [styles.likedButton, { margin : 30, width : 100, height : 50}],
                         ]}
                         >
-                            <Text style={styles.buttonText}>Like</Text>
+                            <Text style={styles.buttonText}>{likedItems[selectedImage.id] ? 'Liked' : 'Like'}</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => setModalVisible(false)} style={[styles.button, {backgroundColor : '#D20062', width : 100, height : 50}]}>
+                        <TouchableOpacity onPress={() => setModalVisible(false)} style={[styles.button, {backgroundColor : '#cb0c9f', width : 100, height : 50}]}>
                             <Text style={styles.buttonText}>Close</Text>
                         </TouchableOpacity>
                     </View>

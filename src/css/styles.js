@@ -27,6 +27,10 @@ export const styles = StyleSheet.create({
         paddingHorizontal : 40,
         marginBottom : 5,
     },
+    input : {
+        borderColor : 'gray',
+        borderWidth : 1,
+    },
     buttonView : {
         width : '100%',
         paddingHorizontal : 50,
@@ -66,7 +70,7 @@ export const styles = StyleSheet.create({
     },
     textContainer : {
         padding : 15,
-        backgroundColor : '#D20062',
+        backgroundColor : '#cb0c9f',
         color : 'white',
         borderRadius : 50,
         margin : 30,
@@ -100,13 +104,13 @@ export const styles = StyleSheet.create({
         color : 'white',
     },
     modalTextContainer : {
-        backgroundColor : '#D20062',
+        backgroundColor : '#cb0c9f',
         borderRadius : 50,
         padding : 15,
         overflow : 'hidden',
     },
     likedButton : {
-        backgroundColor : '#77E4C8',
+        backgroundColor : '#82d616',
         height : 45,
         borderColor : 'gray',
         borderWidth : 1,

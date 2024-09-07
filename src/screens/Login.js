@@ -25,9 +25,9 @@ function Login() {
 
     const navigation = useNavigation();
 
+    //Login is just a placeholder with hardcoded values
     const handleLogin = () => {
-        if (username === 'test' && password === 'test') {
-            Alert.alert('Success', 'You are logged in');
+        if (username === 'test' && password === 'test') {;
             user.setUsername(username);
             navigation.navigate('TabNavigator');
         } else {

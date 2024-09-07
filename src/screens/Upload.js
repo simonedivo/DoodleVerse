@@ -62,6 +62,7 @@ function Upload() {
 		const destinationPath = `./../images/${fileName}`;
 		
 		Alert.alert('Your drawing has been saved!');
+		setImagePath('');
 	};
 
 	return (
@@ -69,26 +70,26 @@ function Upload() {
             <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', marginTop : 25}}>
                 <Text style={styles.header}>Upload Page</Text>
             </View>
-			<View style={styles.textContainer}>
-				<Text style={{ fontSize: 24, fontWeight: 'bold', color : 'white', marginBottom : 20}}>Username: {user.getUsername()}</Text>
+			<View style={[styles.textContainer, { padding: 40 }]}>
             	<TextInput
             	    placeholder="Insert a description here" 
+					placeholderTextColor="white"
             	    value={description}
             	    onChangeText={setDescription}
 					style={{ color : 'white', fontSize : 18, marginBottom : 20}}	
             	/>
-            	<Pressable onPress={handleLaunchCamera} style={[styles.button, {backgroundColor : '#77E4C8'}]}>
-					<Text style={[styles.buttonText, {backgroundColor : '#77E4C8'}]}>Camera</Text>
+            	<Pressable onPress={handleLaunchCamera} style={[styles.button, {backgroundColor : '#FFD700'}]}>
+					<Text style={[styles.buttonText, {backgroundColor : '#FFD700'}]}>Camera</Text>
 				</Pressable>
 				<Text style={{color : 'white', margin : 15, fontSize : 20, textAlign : 'center'}}>OR</Text>
-            	<Pressable onPress={handleLaunchImageLibrary} style={[styles.button, {backgroundColor : '#77E4C8'}]}>
-					<Text style={[styles.buttonText, {backgroundColor : '#77E4C8'}]}>Choose from Library</Text>
+            	<Pressable onPress={handleLaunchImageLibrary} style={[styles.button, {backgroundColor : '#FFD700'}]}>
+					<Text style={[styles.buttonText, {backgroundColor : '#FFD700'}]}>Choose from Library</Text>
 				</Pressable>
             	{imagePath && (
             	    <>
             	        <Image source={{ uri: imagePath }} style={{ width: 200, height: 200 , margin: 30, borderWidth: 2, borderColor: 'white', alignItems: 'center'}} />
-						<Pressable title="Confirm" onPress={handleSaveImage} style={[styles.button, {backgroundColor : '#77E4C8'}]}>
-					<Text style={[styles.buttonText, {backgroundColor : '#77E4C8'}]}>Upload</Text>
+						<Pressable title="Confirm" onPress={handleSaveImage} style={[styles.button, {backgroundColor : '#FFD700'}]}>
+					<Text style={[styles.buttonText, {backgroundColor : '#FFD700'}]}>Upload</Text>
 				</Pressable>
             	    </>
             	)}
