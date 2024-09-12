@@ -20,11 +20,18 @@ function Ranking() {
                 <Text style={styles.header}>Ranking Page</Text>
             </View>
             <View>
-                {sortedImageData.map((item) => (
-                    <View key={item.id} style={{ marginVertical: 10, alignItems: 'center' }}>
-                        <Image source={item.imagePath} style={{ width: 200, height: 200 }} />
-                        <Text>{item.user}</Text>
-						<Text>Likes: {item.likes}</Text>
+                {sortedImageData.map((item, index) => (
+                    <View key={item.id}>
+                        <View style={{ marginVertical: 10, alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}>
+                            <Image source={item.imagePath} style={{ width: 200, height: 200 }} />
+                            <View style={{ marginLeft: 10 }}>
+                                <Text style={{ fontWeight: 'bold', marginBottom: 5 }}>{item.user}</Text>
+                                <Text>Likes: {item.likes}</Text>
+                            </View>
+                        </View>
+                        {index < sortedImageData.length - 1 && (
+                            <View style={{ height: 1, backgroundColor: '#ccc', marginVertical: 10 }} />
+                        )}
                     </View>
                 ))}
             </View>

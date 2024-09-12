@@ -25,7 +25,7 @@ function Login() {
 
     const navigation = useNavigation();
 
-    //Login is just a placeholder with hardcoded values
+    //il login è solo un placeholder 
     const handleLogin = () => {
         if (username === 'test' && password === 'test') {;
             user.setUsername(username);

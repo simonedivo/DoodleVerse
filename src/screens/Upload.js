@@ -24,7 +24,7 @@ function Upload() {
 		let result = await ImagePicker.launchCameraAsync({
 			mediaTypes: ImagePicker.MediaTypeOptions.Images,
 			allowsEditing: true,
-			aspect: [4, 3],
+			aspect: [4, 4],
 			quality: 1,
 		});
 
@@ -51,7 +51,7 @@ function Upload() {
 			setImagePath(result.assets[0].uri);
 		}
 	};
-
+	//handleSaveImage è una funzione placeholder, in quanto se ci fosse un server dovrebbe inviargli l'immagine, la descrizione e l'utente che l'ha caricata con anche data e ora
 	const handleSaveImage = async () => {
 		if (!imagePath) {
 			console.log('No image to save');
@@ -76,9 +76,12 @@ function Upload() {
 					placeholderTextColor="white"
             	    value={description}
             	    onChangeText={setDescription}
-					style={{ color : 'white', fontSize : 18, marginBottom : 20}}	
+					style={{ color : 'white', fontSize : 18}}	
             	/>
-            	<Pressable onPress={handleLaunchCamera} style={[styles.button, {backgroundColor : '#FFD700'}]}>
+			</View>
+			<View style={[styles.textContainer, { padding: 40 }]}>
+				<Text style={{color : 'white', fontSize : 20, textAlign : 'center', paddingBottom: 35, fontWeight : 'bold'}}>UPLOAD METHODS</Text>
+				<Pressable onPress={handleLaunchCamera} style={[styles.button, {backgroundColor : '#FFD700'}]}>
 					<Text style={[styles.buttonText, {backgroundColor : '#FFD700'}]}>Camera</Text>
 				</Pressable>
 				<Text style={{color : 'white', margin : 15, fontSize : 20, textAlign : 'center'}}>OR</Text>
@@ -86,14 +89,14 @@ function Upload() {
 					<Text style={[styles.buttonText, {backgroundColor : '#FFD700'}]}>Choose from Library</Text>
 				</Pressable>
             	{imagePath && (
-            	    <>
-            	        <Image source={{ uri: imagePath }} style={{ width: 200, height: 200 , margin: 30, borderWidth: 2, borderColor: 'white', alignItems: 'center'}} />
-						<Pressable title="Confirm" onPress={handleSaveImage} style={[styles.button, {backgroundColor : '#FFD700'}]}>
+            	<>
+            	    <Image source={{ uri: imagePath }} style={{ width: 200, height: 200 , margin: 30, borderWidth: 2, borderColor: 'white', alignItems: 'center'}} />
+					<Pressable title="Confirm" onPress={handleSaveImage} style={[styles.button, {backgroundColor : '#FFD700'}]}>
 					<Text style={[styles.buttonText, {backgroundColor : '#FFD700'}]}>Upload</Text>
 				</Pressable>
-            	    </>
+            	</>
             	)}
-				</View>
+			</View>
         </ScrollView>
     );
 }
